@@ -19,7 +19,7 @@ interface Props {
     lastUpdate: string
 }
 
-const TerraformNew = ({ terraform }: { terraform: TerraformInfo }) => {
+const Terraform = ({ terraform }: { terraform: TerraformInfo }) => {
     return (
         <a href={terraform.url} target="_blank">
             <div className="m-auto text-white pb-4 mb-8 flex flex-col justify-center items-center gap-2 p-4 md:m-4 transform hover:scale-105 active:scale-100 duration-300 transition-all w-full md:w-96">
@@ -27,20 +27,6 @@ const TerraformNew = ({ terraform }: { terraform: TerraformInfo }) => {
                 <div className="text-center">
                     <p className="text-lg">#{terraform.id}</p>
                     <p className="text-gray-300">{terraform.price} ETH <span className="px-2">·</span> <span className="pr-0">Seed:</span> {terraform.seed}</p>
-                </div>
-            </div>
-        </a>
-    )
-}
-
-const Terraform = ({ terraform }: { terraform: TerraformInfo }) => {
-    return (
-        <a href={terraform.url} target="_blank">
-            <div className="m-auto pb-4 mb-8 flex flex-col justify-center items-center gap-2 p-4 md:m-4 border border-white transform hover:scale-105 transition-all bg-black w-full md:w-96">
-                <img src={terraform.svg} />
-                <div className="text-center">
-                    <p className="text-lg">#{terraform.id} - {terraform.seed}</p>
-                    <p>{terraform.price} ETH</p>
                 </div>
             </div>
         </a>
@@ -90,7 +76,7 @@ const About = ({ terraforms, lastUpdate }: Props) => {
             <div className="grid md:grid-cols-2 pt-2 text-white">
                 {terraforms.map((terraform) => {
                     // return <Terraform terraform={terraform} key={terraform.id} />
-                     return <TerraformNew terraform={terraform} key={terraform.id} />
+                     return <Terraform terraform={terraform} key={terraform.id} />
                 })}
             </div>
         </div>

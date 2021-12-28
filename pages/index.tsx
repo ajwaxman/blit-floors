@@ -15,7 +15,7 @@ export async function getStaticProps() {
 }
 
 interface Props {
-    terraforms: TerraformsInfo[]
+    terraforms: TerraformInfo[]
     lastUpdate: string
 }
 

@@ -9,7 +9,8 @@ function MyApp({ Component, pageProps }) {
         <title>Seed Sniper</title>
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@ajwaxman" />
-        <meta property="og:url" content="https://seedsniper.vercel.app/seed-sniper.png" />
+        <meta property="og:url" content="https://www.seedsniper.xyz" />
+        <meta property="og:image" content="https://www.seedsniper.xyz/seed-sniper.png" />
         <meta property="og:title" content="🌱 Seed Sniper" />
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />
         <meta

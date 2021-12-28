@@ -33,7 +33,7 @@ export const fetchTerraforms = async () => {
         .filter((d) => {
             return d.sell_orders && d.sell_orders.length > 0 && d.sell_orders[0].payment_token_contract.symbol == 'ETH'
         })
-        .map((a): TerraformInfo => {
+        .map((a) => {
             return {
                 id: a.token_id,
                 price: Number(

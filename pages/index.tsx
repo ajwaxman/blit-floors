@@ -50,7 +50,7 @@ const Terraform = ({ terraform }: { terraform: TerraformInfo }) => {
 const About = ({ terraforms, lastUpdate }: Props) => {
     console.log(terraformsMetadata[0]["level"]);
     return (
-        <div className="py-3 md:pb-0 font-sans flex flex-col justify-center items-center gap-4 pt-10 md:w-screen">
+        <div className="py-3 md:pb-0 font-mono tracking-tighter flex flex-col justify-center items-center gap-4 pt-10 md:w-screen">
             <h1 className="text-lg text-[#68d000] md:text-2xl font-bold"><span className="pr-1.5">🌱</span> Seed Sniper</h1>
             <div className="text-gray-100 text-center max-w-screen-md md:leading-loose">
                 <p className="md:text-lg mt-1">

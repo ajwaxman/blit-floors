@@ -37,10 +37,10 @@ const Terraform = ({ terraform }: { terraform: TerraformInfo }) => {
 const XSeeds = ({ terraforms, lastUpdate, outOf }: Props) => {
     return (
         <div className="py-3 md:pb-0 font-mono tracking-tighter flex flex-col justify-center items-center gap-4 pt-10 md:w-screen">
-            <h1 className="text-lg text-[#ffb43d] md:text-2xl font-bold"><span className="pr-1.5">🏆</span> X Seeds</h1>
+            <h1 className="text-lg text-[#ffb43d] md:text-2xl font-bold"><span className="pr-1.5">🏆</span> X SEEDS</h1>
             <div className="text-gray-100 text-center max-w-screen-md md:leading-loose">
                 <p className="md:text-lg mt-1">
-                    {terraforms.length} out of {outOf} X Seeds are for sale.
+                    {terraforms.length} out of {outOf} X SEEDS are for sale.
                 </p>
                 <p className="text-gray-100 text-sm mv-4 mt-3">Last updated {ts(lastUpdate)}</p>
             </div>

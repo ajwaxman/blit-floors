@@ -1,9 +1,9 @@
-import { TerraformInfo, fetch9000 } from './api/terraforms'
+import { TerraformInfo, fetchOriginXSeeds } from './api/origin-x-seeds'
 import { format as ts } from 'timeago.js'
 import terraformsMetadata from '../data/terraforms.json'
 
 export async function getStaticProps() {
-    const data = await fetch9000()
+    const data = await fetchOriginXSeeds()
     return {
         props: {
             terraforms: data.terraforms,
@@ -33,44 +33,15 @@ const Terraform = ({ terraform }: { terraform: TerraformInfo }) => {
     )
 }
 
-const NineThousand = ({ terraforms, lastUpdate, outOf }: Props) => {
+const OriginXSeeds = ({ terraforms, lastUpdate, outOf }: Props) => {
     return (
         <div className="py-3 md:pb-0 font-mono tracking-tighter flex flex-col justify-center items-center gap-4 pt-10 md:w-screen">
-            <h1 className="text-lg text-[#68d000] md:text-2xl font-bold"><span className="pr-1.5">🌱</span> Seed Sniper</h1>
+            <h1 className="text-lg text-[#edb900] md:text-2xl font-bold"><span className="pr-1.5">👑</span> Origin X Seeds</h1>
             <div className="text-gray-100 text-center max-w-screen-md md:leading-loose">
                 <p className="md:text-lg mt-1">
-                    There are {terraforms.length} out of {outOf} items with SEED {'<'} 100 for sale.
+                    {terraforms.length} out of {outOf} Origin X Seeds are for sale.
                 </p>
                 <p className="text-gray-100 text-sm mv-4 mt-3">Last updated {ts(lastUpdate)}</p>
-                <p className="text-sm text-gray-400 mt-5 border-t mt-8 pt-8 border-gray-100">
-                    Site by {' '}
-                    <a
-                        target="_blank"
-                        href="https://twitter.com/ajwaxman"
-                        className="underline text-sky-300 hover:text-sky-400 duration-200 transition-all"
-                    >
-                        @ajwaxman
-                    </a>
-                    . Built on top of {' '}
-                    <a
-                        target="_blank"
-                        href="https://twitter.com/worm_emoji"
-                        className="underline text-sky-300 hover:text-sky-400 duration-200 transition-all"
-                    >
-                        @worm_emoji
-                    </a> 
-                    {' '} and {' '}
-                    <a
-                        target="_blank"
-                        href="https://twitter.com/uronsol"
-                        className="underline text-sky-300 hover:text-sky-400 duration-200 transition-all"
-                    >
-                        @uronsol
-                    </a>'s work.
-                </p>
-                <p className="text-sm text-gray-400 mt-2">
-                Tips appreciated: 0xE332de3c84C305698675A73F366061941C78e3b4
-                </p>
             </div>
             <div className="grid md:grid-cols-2 pt-2 text-white">
                 {terraforms.map((terraform) => {
@@ -82,4 +53,4 @@ const NineThousand = ({ terraforms, lastUpdate, outOf }: Props) => {
     )
 }
 
-export default NineThousand
+export default OriginXSeeds

@@ -34,7 +34,18 @@ const Terraform = ({ terraform }: { terraform: TerraformInfo }) => {
 
 const Home = ({ terraforms, lastUpdate }: Props) => {
     return (
-        <div>Hello</div>
+        <div className="py-3 md:pb-0 font-mono tracking-tighter flex flex-col justify-center items-center gap-4 pt-10 md:w-screen">
+            <h1 className="text-lg text-[#68d000] md:text-2xl font-bold mt-10 mb-5"><span className="pr-1.5">🌱</span> Seed Sniper</h1>
+            {/* <h3 className="text-sky-300 text-xl font-bold">BY SEED</h3> */}
+            <ul>
+                <li className="mb-3">👑 <a href="/origin-x-seeds" className="underline">Origin X Seeds</a><span className="text-slate-600"> (14 available)</span></li>
+                <li className="mb-3">🏆 <a href="/x-seeds" className="underline">X Seeds</a><span className="text-slate-600"> (34 available)</span></li>
+                <li className="mb-3">🌳 <a href="/above-9950" className="underline"> SEED {">"} 9950</a><span className="text-slate-600"> (54 available)</span></li>
+                <li className="mb-3">🌿 <a href="/above-9900" className="underline"> SEED {">"} 9900</a><span className="text-slate-600"> (104 available)</span></li>
+                <li className="mb-3">🌱 <a href="/under-100" className="underline"> SEED {"<"} 100</a><span className="text-slate-600"> (105 available)</span></li>
+                <li className="mb-3">✋ <a href="/longloops" className="underline"> Level 5</a><span className="text-slate-600"> (217 available)</span></li>
+            </ul>
+        </div>
     )
 }
 

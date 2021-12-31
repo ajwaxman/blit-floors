@@ -1,7 +1,6 @@
 import { TerraformInfo, fetchTerraforms } from './api/terraforms'
 import { format as ts } from 'timeago.js'
 import terraformsMetadata from '../data/terraforms.json'
-import longLoops from '../data/long-loops.json'
 
 export async function getStaticProps() {
     const data = await fetchTerraforms()
@@ -39,7 +38,7 @@ const Longloops = ({ terraforms, lastUpdate }: Props) => {
             <h1 className="text-lg text-[#68d000] md:text-2xl font-bold"><span className="pr-1.5">🌱</span> Seed Sniper</h1>
             <div className="text-gray-100 text-center max-w-screen-md md:leading-loose">
                 <p className="md:text-lg mt-1">
-                    There are {terraforms.length} out of {longLoops.length} <a href="https://docs.google.com/presentation/d/1v0ccwju6isFD8lIRKFyiPLxbVJhPCSmLLjxF3TBZG4I/edit#slide=id.g109bfa92b01_22_0" target="_blank" className="underline hover:text-sky-400 duration-200 transition-all"> long loopers</a> for sale.
+                    There are {data.length} out of {data.length} <a href="https://docs.google.com/presentation/d/1v0ccwju6isFD8lIRKFyiPLxbVJhPCSmLLjxF3TBZG4I/edit#slide=id.g109bfa92b01_22_0" target="_blank" className="underline hover:text-sky-400 duration-200 transition-all"> long loopers</a> for sale.
                 </p>
                 <p className="text-gray-100 text-sm mv-4 mt-3">Last updated {ts(lastUpdate)}</p>
                 <p className="text-sm text-gray-400 mt-5 border-t mt-8 pt-8 border-gray-100">

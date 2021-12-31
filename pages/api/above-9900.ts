@@ -70,7 +70,7 @@ export const fetchAbove9900 = async () => {
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
     try {
-        const data = await fetchTerraforms()
+        const data = await fetchAbove9900()
         res.status(200).json(data)
     } catch (err) {
         res.status(500).json({ statusCode: 500, message: err.message })

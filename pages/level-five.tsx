@@ -17,6 +17,7 @@ export async function getStaticProps() {
 interface Props {
     terraforms: TerraformInfo[]
     lastUpdate: string
+    outOf: string
 }
 
 const Terraform = ({ terraform }: { terraform: TerraformInfo }) => {

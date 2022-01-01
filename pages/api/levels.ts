@@ -6,7 +6,7 @@ import terraformMetadata from '../../data/terraforms.json'
 import levelsData from '../../data/levels.json'
 
 
-const fetchLevelFloor = async (id: string) => {
+const fetchLevelFloor = async (id) => {
     let url = 'https://indexer-v3-api-production.up.railway.app/tokens?collection=terraforms&sortBy=floorSellValue&sortDirection=asc&offset=0&limit=1&attributes%5BLevel%5D='
     url += id
 
@@ -18,7 +18,7 @@ const fetchLevelFloor = async (id: string) => {
 }
 
 export interface LevelInfo {
-    level: string
+    level: Number
     quantity: Number
     floor: Number
     url: string
@@ -27,7 +27,7 @@ export interface LevelInfo {
 }
 
 const getRarity = (quantity) => {
-    let rarity = "";
+    let rarity = {};
     if (quantity < 25) {
         rarity = { "name": "🥇 Mythic", "css":"bg-[#725e1d] text-[#F3EACE]"};
     } else if (quantity < 100) {
@@ -60,8 +60,8 @@ export const fetchLevels = async () => {
                 quantity: a.quantity,
                 floor: apiData[a.level - 1 ] ? apiData[a.level - 1] : null,
                 url:"https://opensea.io/assets/terraforms?search[numericTraits][0][name]=Level&search[numericTraits][0][ranges][0][max]="+a.level+"&search[numericTraits][0][ranges][0][min]="+a.level+"&search[sortAscending]=true&search[sortBy]=PRICE&search[toggles][0]=BUY_NOW",
-                rarity: getRarity(a.quantity).name,
-                css: getRarity(a.quantity).css
+                rarity: getRarity(a.quantity)["name"],
+                css: getRarity(a.quantity)["css"]
             }
         })
     return {

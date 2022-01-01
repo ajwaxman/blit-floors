@@ -1,4 +1,4 @@
-import { TerraformInfo, fetchLevels } from './api/levels'
+import { LevelInfo, fetchLevels } from './api/levels'
 import { format as ts } from 'timeago.js'
 import levelsData from '../data/levels.json'
 
@@ -88,7 +88,7 @@ const LevelFive = ({ levels, lastUpdate }: Props) => {
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{level.quantity}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{level.floor}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href={level.url} target="_blank" rel="noopener noreferrer" rel="noopener noreferrer" className="text-green-700 hover:text-green-900 duration-300 transition-all">
+                                    <a href={level.url} target="_blank" rel="noopener noreferrer" className="text-green-700 hover:text-green-900 duration-300 transition-all">
                                         Buy Now
                                     </a>
                                     </td>

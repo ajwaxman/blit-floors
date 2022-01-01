@@ -12,9 +12,7 @@ const fetchLevelFloor = async (id) => {
 
     const res = await fetch(url);
     const json = await res.json()
-    console.log("hello");
     return json["tokens"][0]["market"]["floorSell"]["value"]
-    // return json.tokens
 }
 
 export interface LevelInfo {
@@ -51,10 +49,8 @@ export const fetchLevels = async () => {
     var _ = require('lodash');
 
     const apiData = await pMap(levels, fetchLevelFloor, { concurrency: 2 })
-    console.log(apiData)
     const mapped = levelsMetadata
         .map((a): LevelInfo => {
-            console.log("Hello");
             return {
                 level: a.level,
                 quantity: a.quantity,

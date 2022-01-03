@@ -9,7 +9,7 @@ export async function getStaticProps() {
             compositions: data.compositions,
             lastUpdate: data.lastUpdate
         },
-        revalidate: 60,
+        revalidate: 250,
     }
 }
 

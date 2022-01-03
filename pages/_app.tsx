@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:creator" content="@ajwaxman" />
         <meta property="og:url" content="https://www.flipfloor.xyz" />
         <meta property="og:image" content="https://www.flipfloor.xyz/flip-floor.png" />
-        <meta property="og:title" content="🧹 Flip Floor" />
+        <meta property="og:title" content="🧹 Flipmap Floor Rankings" />
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />
         <meta
           property="og:description"

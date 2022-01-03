@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }) {
           property="og:description"
           content="See the Flipmap floor price for all compositions."
         />
+        <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1" />
         <meta property="og:image" content="/flip-floor.png" />
       </Head>
     </>

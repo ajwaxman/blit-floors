@@ -6,18 +6,18 @@ function MyApp({ Component, pageProps }) {
     <>
       <Component {...pageProps} />
       <Head>
-        <title>Seed Sniper</title>
+        <title>Flipmap Floor Rankings</title>
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@ajwaxman" />
-        <meta property="og:url" content="https://www.seedsniper.xyz" />
-        <meta property="og:image" content="https://www.seedsniper.xyz/seed-sniper.png" />
-        <meta property="og:title" content="🌱 Seed Sniper" />
+        <meta property="og:url" content="https://www.flipfloor.xyz" />
+        <meta property="og:image" content="https://www.flipfloor.xyz/flip-floor.png" />
+        <meta property="og:title" content="🔥 Flip Floor" />
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />
         <meta
           property="og:description"
-          content="See the floor price of long looping Terraforms."
+          content="See the Flipmap floor price for all compositions."
         />
-        <meta property="og:image" content="/seed-sniper.png" />
+        <meta property="og:image" content="/flip-floor.png" />
       </Head>
     </>
   )

@@ -50,7 +50,7 @@ const fetchLevelFloor = async (id) => {
 
 export interface FlipInfo {
     name: string
-    item_number: Number
+    item_number: String
     floor: Number
     one_away: Number
     three_away: Number
@@ -67,9 +67,7 @@ export const fetchFlips = async () => {
     const apiData = await pMap(compositions, fetchFlipFloor, { concurrency: 2 })
 
     const mapped = compositionData
-        .map((c, index): LevelInfo => {
-            console.log(c);
-            console.log(apiData[index][3]["market"]["floorSell"]["value"])
+        .map((c, index): FlipInfo => {
             return {
                 name: c,
                 item_number: c.split("#").pop().split(')')[0],
@@ -101,7 +99,7 @@ export interface LevelInfo {
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
     try {
-        const data = await fetchLevels()
+        const data = await fetchFlips()
         res.status(200).json(data)
     } catch (err) {
         res.status(500).json({ statusCode: 500, message: err.message })

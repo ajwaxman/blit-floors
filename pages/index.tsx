@@ -1,4 +1,4 @@
-import { LevelInfo, fetchFlips } from './api/flips'
+import { LevelInfo, fetchFlips, FlipInfo } from './api/flips'
 import { format as ts } from 'timeago.js'
 
 export async function getStaticProps() {
@@ -15,7 +15,7 @@ export async function getStaticProps() {
 
 interface Props {
     flips: FlipInfo[]
-    compositions: Array[]
+    compositions: String[]
     lastUpdate: string
 }
 

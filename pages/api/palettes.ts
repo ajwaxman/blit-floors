@@ -50,18 +50,12 @@ const fetchLevelFloor = async (id) => {
 }
 
 const getPalette = (index) => {
-    // console.log("start")
-    // console.log("Index ID: " + index)
-    // console.log("Blitmap ID: " + blitmapData[index]["id"])
-    // console.log("Blitmap Name: " + blitmapData[index]["name"])
 
     let colors = []
     colors.push(blitmapData[index]["colors"][0])
     colors.push(blitmapData[index]["colors"][1])
     colors.push(blitmapData[index]["colors"][2])
     colors.push(blitmapData[index]["colors"][3])
-    // console.log(colors)
-    // console.log("End")
     return colors
 }
 
@@ -82,7 +76,7 @@ export interface FlipInfo {
     three_away: Number
     five_away: Number
     url: string
-    colors: String[]
+    colors: string[]
 }
 
 
@@ -105,7 +99,7 @@ export const fetchFlips = async () => {
                 three_away: getFloor(apiData, index, 3),
                 five_away: getFloor(apiData, index, 5),
                 url: "https://opensea.io/assets/flipmap?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=Palette&search[stringTraits][0][values][0]=" + escape(c) + "&search[toggles][0]=BUY_NOW",
-                colors: getPalette(index)[0]
+                colors: getPalette(c.split("#").pop().split(')')[0])
             }
         })
     return {

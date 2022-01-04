@@ -3,7 +3,7 @@ import { format as ts } from 'timeago.js'
 
 export async function getStaticProps() {
     const data = await fetchFlips()
-    console.log(data)
+    // console.log(data)
     return {
         props: {
             flips: data.flips,
@@ -23,12 +23,13 @@ interface Props {
 const FlipFloor = ({ flips, compositions, lastUpdate }: Props) => {
     return (
         <div className="py-3 md:pb-0 font-mono tracking-tighter flex flex-col justify-center items-center gap-4 pt-10 md:w-screen">
-            <h1 className="text-lg text-gray-100 md:text-2xl font-bold"><span className="pr-1">🧹</span> Flipmap Floor Rankings</h1>
+            <h1 className="text-lg text-gray-100 md:text-2xl font-bold"><span className="pr-1">🎨</span> Flipmap Palette Floor Rankings</h1>
             <div className="text-gray-100 text-center max-w-screen-md md:leading-loose">
                 {/* <p className="md:text-lg mt-1">
                     Which level should you join?
                 </p> */}
                 <p className="text-gray-400 text-sm mv-4 mb-2">Last updated {ts(lastUpdate)}</p>
+                <a href="/palettes" className="text-[#6bc04e] text-xs mv-4 mb-5">🖼 <span className="underline">View rankings by Composition</span></a>
             </div>
             <div className="grid md:grid-cols-1 pt-2 mb-20 text-white place-content-center">
                 <div className="flex flex-col">
@@ -48,7 +49,7 @@ const FlipFloor = ({ flips, compositions, lastUpdate }: Props) => {
                                                 scope="col"
                                                 className="pl-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                             >
-                                                🎨 Palette
+                                                Palette
                                             </th>
                                             <th
                                                 scope="col"

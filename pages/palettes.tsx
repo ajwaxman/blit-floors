@@ -29,7 +29,7 @@ const FlipFloor = ({ flips, compositions, lastUpdate }: Props) => {
                     Which level should you join?
                 </p> */}
                 <p className="text-gray-400 text-sm mv-4 mb-2">Last updated {ts(lastUpdate)}</p>
-                <a href="/palettes" className="text-[#6bc04e] text-xs mv-4 mb-5">🖼 <span className="underline">View rankings by Composition</span></a>
+                <a href="/" className="text-[#6bc04e] text-xs mv-4 mb-5">🖼 <span className="underline">View rankings by Composition</span></a>
             </div>
             <div className="grid md:grid-cols-1 pt-2 mb-20 text-white place-content-center">
                 <div className="flex flex-col">

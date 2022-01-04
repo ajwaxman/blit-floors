@@ -1,8 +1,9 @@
-import { LevelInfo, fetchFlips, FlipInfo } from './api/flips'
+import { LevelInfo, fetchFlips, FlipInfo } from './api/palettes'
 import { format as ts } from 'timeago.js'
 
 export async function getStaticProps() {
     const data = await fetchFlips()
+    // console.log(data)
     return {
         props: {
             flips: data.flips,
@@ -22,13 +23,13 @@ interface Props {
 const FlipFloor = ({ flips, compositions, lastUpdate }: Props) => {
     return (
         <div className="py-3 md:pb-0 font-mono tracking-tighter flex flex-col justify-center items-center gap-4 pt-10 md:w-screen">
-            <h1 className="text-lg text-gray-100 md:text-2xl font-bold"><span className="pr-1">🖼</span> Flipmap Composition Floor Rankings</h1>
+            <h1 className="text-lg text-gray-100 md:text-2xl font-bold"><span className="pr-1">🎨</span> Flipmap Palette Floor Rankings</h1>
             <div className="text-gray-100 text-center max-w-screen-md md:leading-loose">
                 {/* <p className="md:text-lg mt-1">
                     Which level should you join?
                 </p> */}
-                <p className="text-gray-400 text-sm mv-4 mb-3">Last updated {ts(lastUpdate)}</p>
-                <a href="/palettes" className="text-[#6bc04e] text-xs mv-4 mb-5">🎨 <span className="underline">View rankings by Palette</span></a>
+                <p className="text-gray-400 text-sm mv-4 mb-2">Last updated {ts(lastUpdate)}</p>
+                <a href="/palettes" className="text-[#6bc04e] text-xs mv-4 mb-5">🖼 <span className="underline">View rankings by Composition</span></a>
             </div>
             <div className="grid md:grid-cols-1 pt-2 mb-20 text-white place-content-center">
                 <div className="flex flex-col">
@@ -46,13 +47,13 @@ const FlipFloor = ({ flips, compositions, lastUpdate }: Props) => {
                                             </th>
                                             <th
                                                 scope="col"
-                                                className="pr-6 pl-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                                className="pl-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                             >
-                                                Composition
+                                                Palette
                                             </th>
                                             <th
                                                 scope="col"
-                                                className="px-5 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                                className="pr-5 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                                             >
                                                 Floor
                                             </th>
@@ -84,20 +85,29 @@ const FlipFloor = ({ flips, compositions, lastUpdate }: Props) => {
                                             <tr key={flipIndex} className={flipIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                                                 <td className="py-4 whitespace-nowrap text-sm text-center font-medium text-gray-500">{flipIndex + 1}</td>
                                                 <td className="pr-6 pl-3 py-4 whitespace-nowrap">
-                                                <div className="flex items-center">
-                                                    <div className="flex-shrink-0 h-6 w-6">
-                                                    <img className="h-6 w-6" src={`/compositions/${flip.item_number}.png`} alt="" />
+                                                    <div className="flex items-center">
+                                                        <div className={"flex-shrink-0 h-6 w-6 float-left"}>
+                                                            <div className="h-6 w-6 float-left" style={{ background: flip.colors[0] }}></div>
+                                                        </div>
+                                                        <div className={"flex-shrink-0 h-6 w-6 float-left"}>
+                                                            <div className="h-6 w-6 float-left" style={{ background: flip.colors[1] }}></div>
+                                                        </div>
+                                                        <div className={"flex-shrink-0 h-6 w-6 float-left"}>
+                                                            <div className="h-6 w-6 float-left" style={{ background: flip.colors[2] }}></div>
+                                                        </div>
+                                                        <div className={"flex-shrink-0 h-6 w-6 float-left"}>
+                                                            <div className="h-6 w-6 float-left" style={{ background: flip.colors[3] }}></div>
+                                                        </div>
+                                                        <div className="ml-4">
+                                                            <div className="text-sm font-medium text-gray-900">{flip.name}</div>
+                                                            {/* <div className="text-sm text-gray-500">Artist Name</div> */}
+                                                        </div>
                                                     </div>
-                                                    <div className="ml-4">
-                                                    <div className="text-sm font-medium text-gray-900">{flip.name}</div>
-                                                    {/* <div className="text-sm text-gray-500">Artist Name</div> */}
-                                                    </div>
-                                                </div>
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-bold text-gray-900">{flip.floor}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{flip.one_away}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{flip.three_away}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{flip.five_away}</td>
+                                                <td className="pr-6 py-4 whitespace-nowrap text-center text-sm font-bold text-gray-900">{flip.floor == 0 ? "N/A" : flip.floor}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{flip.one_away == 0 ? "N/A" : flip.one_away}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{flip.three_away == 0 ? "N/A" : flip.three_away}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{flip.five_away == 0 ? "N/A" : flip.five_away}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-center text-right text-sm font-medium">
                                                     <a href={flip.url} target="_blank" rel="noopener noreferrer" className="text-[#6bc04e] hover:text-green-900 duration-300 transition-all">
                                                         Buy Now

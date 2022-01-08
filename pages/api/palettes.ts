@@ -89,6 +89,7 @@ export interface FlipInfo {
     three_away: Number
     five_away: Number
     url: string
+    bid_url: string
     colors: string[]
 }
 
@@ -114,6 +115,7 @@ export const fetchFlips = async () => {
                 three_away: getFloor(apiData, index, 3),
                 five_away: getFloor(apiData, index, 5),
                 url: "https://opensea.io/assets/flipmap?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=Palette&search[stringTraits][0][values][0]=" + escape(c) + "&search[toggles][0]=BUY_NOW",
+                bid_url: "https://opensea.io/assets/flipmap?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=Palette&search[stringTraits][0][values][0]=" + escape(c),
                 colors: getPalette(c.split("#").pop().split(')')[0])
             }
         })

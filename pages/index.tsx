@@ -22,6 +22,9 @@ interface Props {
 const FlipFloor = ({ flips, compositions, lastUpdate }: Props) => {
     return (
         <div className="py-3 md:pb-0 font-mono tracking-tighter flex flex-col justify-center items-center gap-4 pt-10 md:w-screen">
+        <div className="fixed top-3 right-3 text-gray-400" style={{fontSize: "12px"}}>
+            Good flip? Feel free to <a className="text-sky-300 underline" href="https://opensea.io/yoshi_nft">tip</a>
+        </div>
             <h1 className="text-lg text-gray-100 md:text-2xl font-bold"><span className="pr-1">🖼</span> Flipmap Composition Floor Rankings</h1>
             <div className="text-gray-100 text-center max-w-screen-md md:leading-loose">
                 {/* <p className="md:text-lg mt-1">
@@ -99,8 +102,8 @@ const FlipFloor = ({ flips, compositions, lastUpdate }: Props) => {
                                                 <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{flip.three_away == 100000 ? "💎🤲" : flip.three_away}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{flip.five_away == 100000 ? "💎🤲" : flip.five_away}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-center text-right text-sm font-medium">
-                                                    <a href={flip.url} target="_blank" rel="noopener noreferrer" className="text-[#6bc04e] hover:text-green-900 duration-300 transition-all">
-                                                        Buy Now
+                                                    <a href={flip.floor == 100000 ? flip.bid_url : flip.url } target="_blank" rel="noopener noreferrer" className="text-[#6bc04e] hover:text-green-900 duration-300 transition-all">
+                                                        {flip.floor == 100000 ? "Bid Now" : "Buy Now"}
                                                     </a>
                                                 </td>
                                                 {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

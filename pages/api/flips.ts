@@ -11,7 +11,7 @@ const exampleTerraformUrl = "https://indexer-v3-api-production.up.railway.app/to
 
 
 const fetchCompositions = async (offset) => {
-    let url = "https://indexer-v3-api-production.up.railway.app/collections/flipmap/attributes?attribute=Composition&limit=20&offset="
+    let url = "https://indexer-v3-api-production.up.railway.app/collections/blitmap/attributes?attribute=Composition&limit=20&offset="
     url += offset;
     
     var _ = require('lodash');
@@ -30,22 +30,12 @@ const fetchCompositions = async (offset) => {
 }
 
 const fetchFlipFloor = async (name) => {
-    let url = "https://indexer-v3-api-production.up.railway.app/tokens?collection=flipmap&sortBy=floorSellValue&sortDirection=asc&offset=0&limit=6&attributes%5BComposition%5D="
+    let url = "https://indexer-v3-api-production.up.railway.app/tokens?collection=blitmap&sortBy=floorSellValue&sortDirection=asc&offset=0&limit=6&attributes%5BComposition%5D="
     url += encodeURIComponent(name);
 
     const res = await fetch(url)
     const json = await res.json()
     return json["tokens"]
-}
-
-
-const fetchLevelFloor = async (id) => {
-    let url = 'https://indexer-v3-api-production.up.railway.app/tokens?collection=terraforms&sortBy=floorSellValue&sortDirection=asc&offset=0&limit=1&attributes%5BLevel%5D='
-    url += id
-
-    const res = await fetch(url)
-    const json = await res.json()
-    return json["tokens"][0]["market"]["floorSell"]["value"]
 }
 
 const getFloor = (apiData, index, depth) => {
@@ -90,8 +80,8 @@ export const fetchFlips = async () => {
                 one_away: getFloor(apiData, index, 1),
                 three_away: getFloor(apiData, index, 3),
                 five_away: getFloor(apiData, index, 5),
-                url:"https://opensea.io/assets/flipmap?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=Composition&search[stringTraits][0][values][0]="+escape(c)+"&search[toggles][0]=BUY_NOW",
-                bid_url: "https://opensea.io/assets/flipmap?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=Palette&search[stringTraits][0][values][0]=" + escape(c),
+                url:"https://opensea.io/assets/blitmap?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=Composition&search[stringTraits][0][values][0]="+escape(c)+"&search[toggles][0]=BUY_NOW",
+                bid_url: "https://opensea.io/assets/blitmap?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=Palette&search[stringTraits][0][values][0]=" + escape(c),
             }
         })
     return {

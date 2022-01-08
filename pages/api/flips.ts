@@ -48,6 +48,20 @@ const fetchLevelFloor = async (id) => {
     return json["tokens"][0]["market"]["floorSell"]["value"]
 }
 
+const getFloor = (apiData, index, depth) => {
+    try {
+        if (apiData[index][depth]["market"]["floorSell"]["value"] == null) {
+            return 100000
+        } else {
+            return Math.round(apiData[index][depth]["market"]["floorSell"]["value"] * 100) / 100
+        }
+    }
+    catch (e) {
+        return 100000
+        console.log(apiData)
+    }
+}
+
 export interface FlipInfo {
     name: string
     item_number: String
@@ -71,10 +85,10 @@ export const fetchFlips = async () => {
             return {
                 name: c,
                 item_number: c.split("#").pop().split(')')[0],
-                floor: Math.round(apiData[index][0]["market"]["floorSell"]["value"] * 100) / 100,
-                one_away: Math.round(apiData[index][1]["market"]["floorSell"]["value"] * 100) / 100,
-                three_away: Math.round(apiData[index][3]["market"]["floorSell"]["value"] * 100) / 100,
-                five_away: Math.round(apiData[index][5]["market"]["floorSell"]["value"] * 100) / 100,
+                floor: getFloor(apiData, index, 0),
+                one_away: getFloor(apiData, index, 1),
+                three_away: getFloor(apiData, index, 3),
+                five_away: getFloor(apiData, index, 5),
                 url:"https://opensea.io/assets/flipmap?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=Composition&search[stringTraits][0][values][0]="+escape(c)+"&search[toggles][0]=BUY_NOW",
             }
         })

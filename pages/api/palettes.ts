@@ -30,6 +30,14 @@ const fetchCompositions = async (offset) => {
     return attributesArray
 }
 
+const fetchGenesisPaletteFloor = async (name) => {
+    let url = "https://indexer-v3-api-production.up.railway.app/tokens?collection=flipmap&sortBy=floorSellValue&sortDirection=asc&offset=0&limit=5&attributes%5BPalette%5D=Genesis%20(%230)"
+
+    const res = await fetch(url)
+    const json = await res.json()
+    return json["tokens"]
+}
+
 const fetchFlipFloor = async (name) => {
     let url = "https://indexer-v3-api-production.up.railway.app/tokens?collection=flipmap&sortBy=floorSellValue&sortDirection=asc&offset=0&limit=6&attributes%5BPalette%5D="
     url += encodeURIComponent(name);
@@ -61,10 +69,15 @@ const getPalette = (index) => {
 
 const getFloor = (apiData, index, depth) => {
     try {
-        return Math.round(apiData[index][depth]["market"]["floorSell"]["value"] * 100) / 100
+        if (apiData[index][depth]["market"]["floorSell"]["value"] == null) {
+            return 100000
+        } else {
+            return Math.round(apiData[index][depth]["market"]["floorSell"]["value"] * 100) / 100
+        }
     }
     catch (e) {
-        return 0
+        return 100000
+        console.log(apiData)
     }
 }
 
@@ -88,6 +101,8 @@ export const fetchFlips = async () => {
     let compositions = compositionData;
 
     const apiData = await pMap(compositions, fetchFlipFloor, { concurrency: 2 })
+
+
 
     const mapped = compositionData
         .map((c, index): FlipInfo => {

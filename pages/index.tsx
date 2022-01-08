@@ -94,10 +94,10 @@ const FlipFloor = ({ flips, compositions, lastUpdate }: Props) => {
                                                     </div>
                                                 </div>
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-bold text-gray-900">{flip.floor}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{flip.one_away}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{flip.three_away}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{flip.five_away}</td>
+                                                <td className="pr-6 py-4 whitespace-nowrap text-center text-sm font-bold text-gray-900">{flip.floor == 100000 ? "💎" : flip.floor}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{flip.one_away == 100000 ? "💎" : flip.one_away}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{flip.three_away == 100000 ? "💎" : flip.three_away}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">{flip.five_away == 100000 ? "💎" : flip.five_away}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-center text-right text-sm font-medium">
                                                     <a href={flip.url} target="_blank" rel="noopener noreferrer" className="text-[#6bc04e] hover:text-green-900 duration-300 transition-all">
                                                         Buy Now

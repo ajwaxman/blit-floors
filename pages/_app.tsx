@@ -9,16 +9,16 @@ function MyApp({ Component, pageProps }) {
         <title>Flipmap Floor Rankings</title>
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@ajwaxman" />
-        <meta property="og:url" content="https://www.flipfloor.xyz" />
-        <meta property="og:image" content="https://www.flipfloor.xyz/flip-floor.png" />
-        <meta property="og:title" content="🧹 Flipmap Floor Rankings" />
+        <meta property="og:url" content="https://www.blitfloor.xyz" />
+        <meta property="og:image" content="https://www.blitfloor.xyz/blit-floor.png" />
+        <meta property="og:title" content="🧹 Blitmap Floor Rankings" />
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />
         <meta
           property="og:description"
-          content="See the Flipmap floor price for all compositions."
+          content="See the Blitmap floor price for all compositions."
         />
         <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1" />
-        <meta property="og:image" content="/flip-floor.png" />
+        <meta property="og:image" content="/blit-floor.png" />
       </Head>
     </>
   )

@@ -5,8 +5,8 @@ import { utils as etherUtils, BigNumber } from 'ethers'
 import compositionData from '../../data/compositions.json'
 import compositionTestData from '../../data/compositions-test.json'
 
-const exampleFlipmapUrl = "https://indexer-v3-api-production.up.railway.app/tokens?collection=flipmap&sortBy=floorSellValue&sortDirection=asc&offset=0&limit=5&attributes%5BComposition%5D=Dunce%20(%2368)"
-const exampleTerraformUrl = "https://indexer-v3-api-production.up.railway.app/tokens?collection=terraforms&sortBy=floorSellValue&sortDirection=asc&offset=0&limit=6&attributes%5BLevel%5D=5"
+const exampleFlipmapUrl = "https://indexer-v31-mainnet.up.railway.app//tokens?collection=flipmap&sortBy=floorSellValue&sortDirection=asc&offset=0&limit=5&attributes%5BComposition%5D=Dunce%20(%2368)"
+const exampleTerraformUrl = "https://indexer-v31-mainnet.up.railway.app//tokens?collection=terraforms&sortBy=floorSellValue&sortDirection=asc&offset=0&limit=6&attributes%5BLevel%5D=5"
 
 
 
@@ -30,7 +30,7 @@ const fetchCompositions = async (offset) => {
 }
 
 const fetchFlipFloor = async (name) => {
-    let url = "https://indexer-v3-api-production.up.railway.app/tokens?collection=blitmap&sortBy=floorSellValue&sortDirection=asc&offset=0&limit=6&attributes%5BComposition%5D="
+    let url = "https://indexer-v31-mainnet.up.railway.app/tokens?collection=blitmap&sortBy=floorSellValue&sortDirection=asc&offset=0&limit=6&attributes%5BComposition%5D="
     url += encodeURIComponent(name);
 
     const res = await fetch(url)
@@ -40,10 +40,10 @@ const fetchFlipFloor = async (name) => {
 
 const getFloor = (apiData, index, depth) => {
     try {
-        if (apiData[index][depth]["market"]["floorSell"]["value"] == null) {
+        if (apiData[index][depth]["floorSellValue"] == null) {
             return 100000
         } else {
-            return Math.round(apiData[index][depth]["market"]["floorSell"]["value"] * 100) / 100
+            return Math.round(apiData[index][depth]["floorSellValue"] * 100) / 100
         }
     }
     catch (e) {
@@ -69,7 +69,7 @@ export const fetchFlips = async () => {
 
     let compositions = compositionData;
 
-    const apiData = await pMap(compositions, fetchFlipFloor, { concurrency: 2 })
+    const apiData = await pMap(compositions, fetchFlipFloor, { concurrency: 1 })
 
     const mapped = compositionData
         .map((c, index): FlipInfo => {
